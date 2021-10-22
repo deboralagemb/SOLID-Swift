@@ -1,6 +1,6 @@
 # SOLID-Swift
 
-Seguindo o tutorial do site [raywenderlich.com ](https://www.raywenderlich.com/21503974-solid-principles-for-ios-apps) para entender na prática o que significa cada um dos princípios de SOLID.
+Seguindo o tutorial do site [raywenderlich.com](https://www.raywenderlich.com/21503974-solid-principles-for-ios-apps) para entender na prática o que significa cada um dos princípios de SOLID.
 
 - **Single Responsibility**
 > Uma classe deve ter um, e apenas um, motivo para mudar.
