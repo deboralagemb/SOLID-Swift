@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00D3636A27272C41007BE806 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D3636927272C40007BE806 /* Persistence.swift */; };
 		1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839F4AF25190F2A00BB00F1 /* AppMain.swift */; };
 		18D775C522AD944300AE281E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* ContentView.swift */; };
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00D3636927272C40007BE806 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		1839F4AF25190F2A00BB00F1 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		18D775BD22AD944300AE281E /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D775C422AD944300AE281E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				F5AEF3AA25FC2FC100A25CE0 /* ExpensesModel.xcdatamodeld */,
 				F52DF9F326013D050047F837 /* DailyReportsDataSource.swift */,
 				F52DF9F426013D050047F837 /* MonthlyReportsDataSource.swift */,
+				00D3636927272C40007BE806 /* Persistence.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				F5AEF3BE25FC3F3400A25CE0 /* ExpenseModel+CoreDataClass.swift in Sources */,
 				18D775C522AD944300AE281E /* ContentView.swift in Sources */,
 				F5AEF3A025FC2BA400A25CE0 /* DailyExpensesView.swift in Sources */,
+				00D3636A27272C41007BE806 /* Persistence.swift in Sources */,
 				1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */,
 				F5AEF3BF25FC3F3400A25CE0 /* ExpenseModel+CoreDataProperties.swift in Sources */,
 				F5AEF3A625FC2BE300A25CE0 /* ExpenseItemView.swift in Sources */,
