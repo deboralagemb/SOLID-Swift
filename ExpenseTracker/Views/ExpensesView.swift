@@ -30,58 +30,45 @@
 /// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 /// THE SOFTWARE.
 
-import CoreData
+import SwiftUI
 import Combine
 
-class DailyReportsDataSource: ObservableObject {
-  var viewContext: NSManagedObjectContext
+struct ExpensesView: View {
+  @State private var isAddPresented = false
+  @ObservedObject var dataSource: ReportsDataSource
 
-  @Published private(set) var currentEntries: [ExpenseModel] = []
-
-  init(viewContext: NSManagedObjectContext = PersistenceController.shared.container.viewContext) {
-    self.viewContext = viewContext
-    prepare()
-  }
-
-  func prepare() {
-    currentEntries = getEntries()
-  }
-
-  private func getEntries() -> [ExpenseModel] {
-    let fetchRequest: NSFetchRequest<ExpenseModel> = ExpenseModel.fetchRequest()
-    fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \ExpenseModel.date, ascending: false)]
-    fetchRequest.predicate = NSPredicate(
-      format: "%@ <= date AND date <= %@",
-      Date().startOfDay as CVarArg,
-      Date().endOfDay as CVarArg)
-    do {
-      let results = try viewContext.fetch(fetchRequest)
-      return results
-    } catch let error {
-      print(error)
-      return []
+  var body: some View {
+    VStack {
+      List {
+        ForEach(dataSource.currentEntries, id: \.id) { item in
+          ExpenseItemView(expenseItem: item)
+        }
+      }
+      TotalView(totalExpense: dataSource.currentEntries.reduce(0) { $0 + $1.price })
+    }
+    .toolbar {
+      Button(action: {
+        isAddPresented.toggle()
+      }, label: {
+        Image(systemName: "plus")
+      })
+    }
+    .fullScreenCover(
+      isPresented: $isAddPresented) {
+      AddExpenseView { title, price, time, comment in
+        dataSource.saveEntry(title: title, price: price, date: time, comment: comment)
+      }
+    }
+    .onAppear {
+      dataSource.prepare()
     }
   }
+}
 
-  func saveEntry(title: String, price: Double, date: Date, comment: String) {
-    let newItem = ExpenseModel(context: viewContext)
-    newItem.title = title
-    newItem.date = date
-    newItem.comment = comment
-    newItem.price = price
-    newItem.id = UUID()
-
-    if let index = currentEntries.firstIndex(where: { $0.date ?? Date() < date }) {
-      currentEntries.insert(newItem, at: index)
-    } else {
-      currentEntries.append(newItem)
-    }
-
-    try? viewContext.save()
-  }
-
-  func delete(entry: ExpenseModel) {
-    viewContext.delete(entry)
-    try? viewContext.save()
+struct DailyExpensesView_Previews: PreviewProvider {
+  static var previews: some View {
+    let reportsDataSource = ReportsDataSource(viewContext: PersistenceController.shared.container.viewContext,
+                                              reportRange: .daily)
+    ExpensesView(dataSource: reportsDataSource)
   }
 }
