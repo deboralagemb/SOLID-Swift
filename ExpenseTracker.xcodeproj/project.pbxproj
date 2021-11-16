@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		00D3636A27272C41007BE806 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D3636927272C40007BE806 /* Persistence.swift */; };
+		00ECE1632743F062008DBB31 /* ReportReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE1622743F062008DBB31 /* ReportReader.swift */; };
+		00ECE1652743F083008DBB31 /* ExpenseModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE1642743F083008DBB31 /* ExpenseModelProtocol.swift */; };
+		00ECE1672743F0B1008DBB31 /* ExpenseModel+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00ECE1662743F0B1008DBB31 /* ExpenseModel+Protocol.swift */; };
 		1839F4B025190F2A00BB00F1 /* AppMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1839F4AF25190F2A00BB00F1 /* AppMain.swift */; };
 		18D775C522AD944300AE281E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* ContentView.swift */; };
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
@@ -27,6 +30,9 @@
 
 /* Begin PBXFileReference section */
 		00D3636927272C40007BE806 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		00ECE1622743F062008DBB31 /* ReportReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReader.swift; sourceTree = "<group>"; };
+		00ECE1642743F083008DBB31 /* ExpenseModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModelProtocol.swift; sourceTree = "<group>"; };
+		00ECE1662743F0B1008DBB31 /* ExpenseModel+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExpenseModel+Protocol.swift"; sourceTree = "<group>"; };
 		1839F4AF25190F2A00BB00F1 /* AppMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMain.swift; sourceTree = "<group>"; };
 		18D775BD22AD944300AE281E /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D775C422AD944300AE281E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +63,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		00ECE1612743F054008DBB31 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				00ECE1622743F062008DBB31 /* ReportReader.swift */,
+				00ECE1642743F083008DBB31 /* ExpenseModelProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		18D775B422AD944300AE281E = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +93,7 @@
 		18D775BF22AD944300AE281E /* ExpenseTracker */ = {
 			isa = PBXGroup;
 			children = (
+				00ECE1612743F054008DBB31 /* Protocols */,
 				D5C6E43B273AF5FE00562400 /* Enums */,
 				F5BE6D9C25FD99310013B09C /* Extensions */,
 				F5AEF3A825FC2F9300A25CE0 /* Storage */,
@@ -126,6 +142,7 @@
 				F5AEF3AA25FC2FC100A25CE0 /* ExpensesModel.xcdatamodeld */,
 				F52DF9F326013D050047F837 /* ReportsDataSource.swift */,
 				00D3636927272C40007BE806 /* Persistence.swift */,
+				00ECE1662743F0B1008DBB31 /* ExpenseModel+Protocol.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -250,7 +267,10 @@
 				F5AEF3AC25FC2FC100A25CE0 /* ExpensesModel.xcdatamodeld in Sources */,
 				F5AEF3B025FC36B100A25CE0 /* TotalView.swift in Sources */,
 				F5AEF3A325FC2BD700A25CE0 /* AddExpenseView.swift in Sources */,
+				00ECE1652743F083008DBB31 /* ExpenseModelProtocol.swift in Sources */,
 				F52DF9F526013D050047F837 /* ReportsDataSource.swift in Sources */,
+				00ECE1672743F0B1008DBB31 /* ExpenseModel+Protocol.swift in Sources */,
+				00ECE1632743F062008DBB31 /* ReportReader.swift in Sources */,
 				F5BE6D9E25FD994B0013B09C /* Date.swift in Sources */,
 				D5C6E43D273AF61700562400 /* ReportRange.swift in Sources */,
 			);
