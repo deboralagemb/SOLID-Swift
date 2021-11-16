@@ -34,7 +34,7 @@ import SwiftUI
 
 struct AddExpenseView: View {
   @Environment(\.presentationMode) var presentation
-  var saveClosure: (String, Double, Date, String) -> Void
+  var saveEntryHandler: SaveEntryProtocol
 
   @State var title: String = ""
   @State var time = Date()
@@ -82,7 +82,7 @@ struct AddExpenseView: View {
       return
     }
 
-    saveClosure(title, numericPrice, time, comment)
+    saveEntryHandler.saveEntry(title: title, price: numericPrice, date: time, comment: comment)
     cancelEntry()
   }
 
@@ -100,8 +100,11 @@ struct AddExpenseView: View {
 }
 
 struct AddExpenseView_Previews: PreviewProvider {
-  static var previews: some View {
-    AddExpenseView { _, _, _, _ in
+  class PreviewSaveHandler: SaveEntryProtocol {
+    func saveEntry(title: String, price: Double, date: Date, comment: String) {
     }
+  }
+  static var previews: some View {
+    AddExpenseView(saveEntryHandler: PreviewSaveHandler())
   }
 }
