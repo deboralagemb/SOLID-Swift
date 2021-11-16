@@ -48,24 +48,4 @@ struct PersistenceController {
       }
     }
   }
-  
-  static var preview: PersistenceController = {
-    let result = PersistenceController(inMemory: true)
-    let viewContext = result.container.viewContext
-    for index in 1..<6 {
-      let newItem = ExpenseModel(context: viewContext)
-      newItem.title = "Test Title \(index)"
-      newItem.date = Date(timeIntervalSinceNow: Double(index * -60))
-      newItem.comment = "Test Comment \(index)"
-      newItem.price = Double(index + 1) * 12.3
-      newItem.id = UUID()
-    }
-    do {
-      try viewContext.save()
-    } catch {
-      let nsError = error as NSError
-      fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-    }
-    return result
-  }()
 }

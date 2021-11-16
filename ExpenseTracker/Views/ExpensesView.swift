@@ -65,10 +65,46 @@ struct ExpensesView: View {
   }
 }
 
-struct DailyExpensesView_Previews: PreviewProvider {
+struct ExpensesView_Previews: PreviewProvider {
   static var previews: some View {
-    let reportsDataSource = ReportsDataSource(viewContext: PersistenceController.shared.container.viewContext,
-                                              reportRange: .daily)
-    ExpensesView(dataSource: reportsDataSource)
+    ExpensesView(dataSource: PreviewReportsDataSource())
+  }
+  
+  struct PreviewExpenseEntry: ExpenseModelProtocol {
+    var title: String?
+    var price: Double
+    var comment: String?
+    var date: Date?
+    var id: UUID? = UUID()
+  }
+  
+  class PreviewReportsDataSource: ReportReader {
+    override init() {
+      super.init()
+      for index in 1..<6 {
+        saveEntry(
+          title: "Test Title \(index)",
+          price: Double(index + 1) * 12.3,
+          date: Date(timeIntervalSinceNow: Double(index * -60)),
+          comment: "Test Comment \(index)")
+      }
+    }
+
+    override func prepare() {
+    }
+
+    override func saveEntry(
+      title: String,
+      price: Double,
+      date: Date,
+      comment: String
+    ) {
+      let newEntry = PreviewExpenseEntry(
+        title: title,
+        price: price,
+        comment: comment,
+        date: date)
+      currentEntries.append(newEntry)
+    }
   }
 }
