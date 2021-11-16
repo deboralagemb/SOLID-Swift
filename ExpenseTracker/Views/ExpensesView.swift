@@ -35,7 +35,7 @@ import Combine
 
 struct ExpensesView: View {
   @State private var isAddPresented = false
-  @ObservedObject var dataSource: ReportsDataSource
+  @ObservedObject var dataSource: ReportReader
 
   var body: some View {
     VStack {
